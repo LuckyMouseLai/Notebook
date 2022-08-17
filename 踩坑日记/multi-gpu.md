@@ -32,5 +32,11 @@
     state_dict = torch.load(model_path)
     model.load_state_dict(state_dict)
     ```
+    ```
+    if isinstance(model, DistributedDataParallel):
+        model = model.module
+
+    model.load_state_dict(checkpoint))
+    ```
 3. 单机多卡/多机多卡-torch.nn.parallel.DistributedDataParallel
 - 未使用过
