@@ -30,7 +30,7 @@
     ## 推理，注意输入和输出名称需要同转模型时一致。可通过session.get_inputs()和session.get_outputs()或通过onnx加载查询。
     pred = self.session.run(output_names=['output_0'], input_feed={'input_0': image.numpy()})
     ```
-2. torch转onnx，存在变量时转模型失败
+2. torch转onnx，存在动态非tensor变量时转模型失败
     - 进入..envs\torch\lib\site-packages\torch\onnx\symbolic_helper.py, 在提示位置print(v.node())查看转模型失败的位置
 
     - 转模型不可用：
